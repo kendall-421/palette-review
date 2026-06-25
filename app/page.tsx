@@ -102,6 +102,62 @@ function StarRating({
   );
 }
 
+function LogoImageGallery({ images }: { images: string[] }) {
+  const [active, setActive] = useState(0);
+  const labels = images.map((_, i) => `Logo ${i + 1}`);
+  return (
+    <div style={{ marginTop: "16px" }}>
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "10px" }}>
+        <div
+          style={{
+            fontSize: "11px",
+            fontWeight: 700,
+            letterSpacing: "0.1em",
+            textTransform: "uppercase",
+            color: "var(--muted)",
+          }}
+        >
+          Logo color combos
+        </div>
+        {images.length > 1 && (
+          <div style={{ display: "flex", gap: "6px" }}>
+            {labels.map((label, i) => (
+              <button
+                key={i}
+                onClick={() => setActive(i)}
+                style={{
+                  fontSize: "11px",
+                  fontWeight: 700,
+                  padding: "4px 10px",
+                  borderRadius: "6px",
+                  border: "1px solid var(--line)",
+                  background: i === active ? "var(--accent)" : "var(--panel2)",
+                  color: i === active ? "#0b0a12" : "var(--muted)",
+                  cursor: "pointer",
+                  fontFamily: "inherit",
+                }}
+              >
+                {label}
+              </button>
+            ))}
+          </div>
+        )}
+      </div>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={images[active]}
+        alt={`Logo color combinations — ${labels[active]}`}
+        style={{
+          width: "100%",
+          borderRadius: "10px",
+          border: "1px solid var(--line)",
+          display: "block",
+        }}
+      />
+    </div>
+  );
+}
+
 function PaletteSwatches({ palette }: { palette: Palette }) {
   return (
     <div className="flex flex-col h-full">
@@ -130,32 +186,8 @@ function PaletteSwatches({ palette }: { palette: Palette }) {
           </div>
         ))}
       </div>
-      {palette.combosImage ? (
-        <div style={{ marginTop: "16px" }}>
-          <div
-            style={{
-              fontSize: "11px",
-              fontWeight: 700,
-              letterSpacing: "0.1em",
-              textTransform: "uppercase",
-              color: "var(--muted)",
-              marginBottom: "10px",
-            }}
-          >
-            Logo color combos
-          </div>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={palette.combosImage}
-            alt="Logo color combinations"
-            style={{
-              width: "100%",
-              borderRadius: "10px",
-              border: "1px solid var(--line)",
-              display: "block",
-            }}
-          />
-        </div>
+      {palette.combosImages && palette.combosImages.length > 0 ? (
+        <LogoImageGallery images={palette.combosImages} />
       ) : palette.combos && palette.combos.length > 0 ? (
         <LogoCombos combos={palette.combos} />
       ) : null}
