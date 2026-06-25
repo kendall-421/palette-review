@@ -1,7 +1,77 @@
 "use client";
 
 import { useState, useEffect, useCallback, useRef } from "react";
-import { PALETTES, Palette } from "@/lib/palettes";
+import { PALETTES, Palette, LogoCombo } from "@/lib/palettes";
+
+function LogoCombos({ combos }: { combos: LogoCombo[] }) {
+  return (
+    <div style={{ marginTop: "16px" }}>
+      <div
+        style={{
+          fontSize: "11px",
+          fontWeight: 700,
+          letterSpacing: "0.1em",
+          textTransform: "uppercase",
+          color: "var(--muted)",
+          marginBottom: "10px",
+        }}
+      >
+        Logo color combos
+      </div>
+      <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
+        {combos.map((combo, i) => (
+          <div
+            key={i}
+            style={{
+              flex: "1 1 0",
+              minWidth: "120px",
+              borderRadius: "10px",
+              overflow: "hidden",
+              border: "1px solid var(--line)",
+            }}
+          >
+            <div
+              style={{
+                backgroundColor: combo.bg,
+                padding: "18px 12px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <span
+                style={{
+                  color: combo.fg,
+                  fontWeight: 900,
+                  fontSize: "clamp(18px, 3vw, 26px)",
+                  letterSpacing: "-0.02em",
+                  fontFamily: "var(--font-geist-sans), system-ui, sans-serif",
+                  lineHeight: 1,
+                  textTransform: "uppercase",
+                }}
+              >
+                TULAGI
+              </span>
+            </div>
+            <div
+              style={{
+                padding: "6px 10px",
+                background: "var(--panel2)",
+                fontSize: "10px",
+                fontWeight: 600,
+                color: "var(--muted)",
+                textAlign: "center",
+                letterSpacing: "0.05em",
+              }}
+            >
+              {combo.label}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
 
 function StarRating({
   value,
@@ -60,6 +130,9 @@ function PaletteSwatches({ palette }: { palette: Palette }) {
           </div>
         ))}
       </div>
+      {palette.combos && palette.combos.length > 0 && (
+        <LogoCombos combos={palette.combos} />
+      )}
     </div>
   );
 }

@@ -4,15 +4,22 @@ export interface ColorSwatch {
   role: string;
 }
 
+export interface LogoCombo {
+  bg: string;
+  fg: string;
+  label: string;
+}
+
 export interface Palette {
   id: string;
   title: string;
   badge: string;
   desc: string;
   colors: ColorSwatch[];
+  combos?: LogoCombo[];
 }
 
-// Placeholder palettes — replace hex values and names with real palette data
+// Placeholder palettes — replace hex values, names, and combos with real palette data
 export const PALETTES: Palette[] = [
   {
     id: "palette-a",
@@ -24,6 +31,11 @@ export const PALETTES: Palette[] = [
       { name: "Cream", hex: "#FDFFF2", role: "Background" },
       { name: "Lime", hex: "#EDFE53", role: "Primary" },
       { name: "Black", hex: "#000000", role: "Text" },
+    ],
+    combos: [
+      { bg: "#EDFE53", fg: "#000000", label: "Lime / Black" },
+      { bg: "#000000", fg: "#EDFE53", label: "Black / Lime" },
+      { bg: "#8C95E8", fg: "#FDFFF2", label: "Periwinkle / Cream" },
     ],
   },
   {
