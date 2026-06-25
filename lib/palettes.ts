@@ -17,6 +17,7 @@ export interface Palette {
   desc: string;
   colors: ColorSwatch[];
   combos?: LogoCombo[];
+  combosImage?: string; // path relative to /public — takes precedence over combos[]
 }
 
 // Placeholder palettes — replace hex values, names, and combos with real palette data
@@ -37,6 +38,7 @@ export const PALETTES: Palette[] = [
       { bg: "#000000", fg: "#EDFE53", label: "Black / Lime" },
       { bg: "#8C95E8", fg: "#FDFFF2", label: "Periwinkle / Cream" },
     ],
+    combosImage: "/palette-a-logos.png",
   },
   {
     id: "palette-b",

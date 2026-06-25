@@ -130,9 +130,35 @@ function PaletteSwatches({ palette }: { palette: Palette }) {
           </div>
         ))}
       </div>
-      {palette.combos && palette.combos.length > 0 && (
+      {palette.combosImage ? (
+        <div style={{ marginTop: "16px" }}>
+          <div
+            style={{
+              fontSize: "11px",
+              fontWeight: 700,
+              letterSpacing: "0.1em",
+              textTransform: "uppercase",
+              color: "var(--muted)",
+              marginBottom: "10px",
+            }}
+          >
+            Logo color combos
+          </div>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={palette.combosImage}
+            alt="Logo color combinations"
+            style={{
+              width: "100%",
+              borderRadius: "10px",
+              border: "1px solid var(--line)",
+              display: "block",
+            }}
+          />
+        </div>
+      ) : palette.combos && palette.combos.length > 0 ? (
         <LogoCombos combos={palette.combos} />
-      )}
+      ) : null}
     </div>
   );
 }
