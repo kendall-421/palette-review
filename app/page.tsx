@@ -149,6 +149,9 @@ function LogoImageGallery({ images }: { images: string[] }) {
         alt={`Logo color combinations — ${labels[active]}`}
         style={{
           width: "100%",
+          maxHeight: "220px",
+          objectFit: "cover",
+          objectPosition: "center",
           borderRadius: "10px",
           border: "1px solid var(--line)",
           display: "block",
