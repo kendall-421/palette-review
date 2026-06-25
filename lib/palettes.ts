@@ -18,13 +18,12 @@ export const PALETTES: Palette[] = [
     id: "palette-a",
     title: "Option A",
     badge: "Palette A",
-    desc: "Placeholder — add your description for this palette option here.",
+    desc: "Periwinkle, lime, cream, and black — a bold, energetic combo with strong contrast and a playful edge.",
     colors: [
-      { name: "Placeholder 1", hex: "#CCCCCC", role: "Primary" },
-      { name: "Placeholder 2", hex: "#AAAAAA", role: "Secondary" },
-      { name: "Placeholder 3", hex: "#888888", role: "Accent" },
-      { name: "Placeholder 4", hex: "#666666", role: "Background" },
-      { name: "Placeholder 5", hex: "#444444", role: "Text" },
+      { name: "Periwinkle", hex: "#8C95E8", role: "Secondary" },
+      { name: "Cream", hex: "#FDFFF2", role: "Background" },
+      { name: "Lime", hex: "#EDFE53", role: "Primary" },
+      { name: "Black", hex: "#000000", role: "Text" },
     ],
   },
   {
