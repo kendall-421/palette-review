@@ -534,13 +534,13 @@ export default function Home() {
         />
       </div>
 
-      {/* Stage */}
+      {/* Stage + Navigation */}
       <div
-        style={{ flex: 1, padding: "24px 16px" }}
+        style={{ padding: "20px 16px 24px" }}
         onTouchStart={onTouchStart}
         onTouchEnd={onTouchEnd}
       >
-        <div style={{ maxWidth: "860px", margin: "0 auto", height: "100%" }}>
+        <div style={{ maxWidth: "860px", margin: "0 auto" }}>
           <PaletteCard
             key={palette.id}
             palette={palette}
@@ -550,8 +550,7 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Navigation */}
-      <nav style={{ padding: "0 24px 24px" }}>
+      <nav style={{ padding: "0 16px 20px" }}>
         <div
           style={{
             maxWidth: "860px",
