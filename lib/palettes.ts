@@ -90,6 +90,6 @@ export const PALETTES: Palette[] = [
       { name: "Cream", hex: "#FCF3E4", role: "Background" },
       { name: "Black", hex: "#000000", role: "Text" },
     ],
-    combosImages: ["/palette-e-logos.png"],
+    combosImages: ["/palette-e-logos.png", "/palette-e-logos-2.png"],
   },
 ];
