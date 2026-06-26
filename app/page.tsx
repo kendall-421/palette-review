@@ -465,75 +465,12 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Navigation inline */}
-        <div style={{ display: "flex", alignItems: "center", gap: "10px", flex: 1, justifyContent: "center" }}>
-          <button
-            onClick={() => go(idx - 1)}
-            disabled={idx === 0}
-            style={{
-              background: "var(--panel)",
-              border: "1px solid var(--line)",
-              borderRadius: "8px",
-              color: idx === 0 ? "var(--muted)" : "var(--text)",
-              padding: "7px 14px",
-              fontFamily: "inherit",
-              fontSize: "13px",
-              fontWeight: 600,
-              cursor: idx === 0 ? "default" : "pointer",
-              opacity: idx === 0 ? 0.45 : 1,
-              flexShrink: 0,
-            }}
-          >
-            ← Prev
-          </button>
-          <div style={{ display: "flex", gap: "7px", alignItems: "center" }}>
-            {PALETTES.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => go(i)}
-                aria-label={`Go to palette ${i + 1}`}
-                style={{
-                  width: "9px",
-                  height: "9px",
-                  borderRadius: "50%",
-                  border: "none",
-                  background: i === idx ? "var(--accent)" : "#332e49",
-                  cursor: "pointer",
-                  padding: 0,
-                  transform: i === idx ? "scale(1.25)" : "scale(1)",
-                  transition: "all 0.15s",
-                }}
-              />
-            ))}
-          </div>
-          <button
-            onClick={() => go(idx + 1)}
-            disabled={idx === total - 1}
-            style={{
-              background: idx === total - 1 ? "var(--panel)" : "var(--accent)",
-              border: "none",
-              borderRadius: "8px",
-              color: idx === total - 1 ? "var(--muted)" : "#0b0a12",
-              padding: "7px 14px",
-              fontFamily: "inherit",
-              fontSize: "13px",
-              fontWeight: 700,
-              cursor: idx === total - 1 ? "default" : "pointer",
-              opacity: idx === total - 1 ? 0.45 : 1,
-              flexShrink: 0,
-            }}
-          >
-            Next →
-          </button>
-        </div>
-
         <div
           style={{
             color: "var(--muted)",
             fontSize: "13px",
             fontWeight: 600,
             fontVariantNumeric: "tabular-nums",
-            flexShrink: 0,
           }}
         >
           {idx + 1} / {total}
@@ -599,13 +536,33 @@ export default function Home() {
         />
       </div>
 
-      {/* Stage + Navigation */}
+      {/* Stage with flanking nav buttons */}
       <div
-        style={{ padding: "20px 16px 24px" }}
+        style={{ padding: "16px 12px 20px", display: "flex", alignItems: "center", gap: "12px" }}
         onTouchStart={onTouchStart}
         onTouchEnd={onTouchEnd}
       >
-        <div style={{ maxWidth: "860px", margin: "0 auto" }}>
+        <button
+          onClick={() => go(idx - 1)}
+          disabled={idx === 0}
+          style={{
+            flexShrink: 0,
+            background: "var(--panel)",
+            border: "1px solid var(--line)",
+            borderRadius: "10px",
+            color: idx === 0 ? "var(--muted)" : "var(--text)",
+            padding: "10px 14px",
+            fontFamily: "inherit",
+            fontSize: "18px",
+            cursor: idx === 0 ? "default" : "pointer",
+            opacity: idx === 0 ? 0.35 : 1,
+          }}
+          aria-label="Previous palette"
+        >
+          ←
+        </button>
+
+        <div style={{ flex: 1, maxWidth: "900px", margin: "0 auto" }}>
           <PaletteCard
             key={palette.id}
             palette={palette}
@@ -613,6 +570,27 @@ export default function Home() {
             onNameMissing={handleNameMissing}
           />
         </div>
+
+        <button
+          onClick={() => go(idx + 1)}
+          disabled={idx === total - 1}
+          style={{
+            flexShrink: 0,
+            background: idx === total - 1 ? "var(--panel)" : "var(--accent)",
+            border: "none",
+            borderRadius: "10px",
+            color: idx === total - 1 ? "var(--muted)" : "#0b0a12",
+            padding: "10px 14px",
+            fontFamily: "inherit",
+            fontSize: "18px",
+            fontWeight: 700,
+            cursor: idx === total - 1 ? "default" : "pointer",
+            opacity: idx === total - 1 ? 0.35 : 1,
+          }}
+          aria-label="Next palette"
+        >
+          →
+        </button>
       </div>
 
     </div>
