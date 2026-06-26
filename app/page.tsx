@@ -436,39 +436,104 @@ export default function Home() {
         flexDirection: "column",
       }}
     >
-      {/* Header */}
+      {/* Header + Nav */}
       <header
         style={{
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
-          padding: "16px 24px",
+          padding: "12px 24px",
           borderBottom: "1px solid var(--line)",
+          gap: "16px",
         }}
       >
-        <div>
+        <div style={{ flexShrink: 0 }}>
           <div
             style={{
-              fontSize: "11px",
+              fontSize: "10px",
               fontWeight: 700,
               letterSpacing: "0.14em",
               textTransform: "uppercase",
               color: "var(--muted)",
-              marginBottom: "2px",
+              marginBottom: "1px",
             }}
           >
             Color Palette Review
           </div>
-          <div style={{ fontWeight: 800, fontSize: "18px", lineHeight: 1.2 }}>
+          <div style={{ fontWeight: 800, fontSize: "16px", lineHeight: 1.2 }}>
             Team Opinion Tracker
           </div>
         </div>
+
+        {/* Navigation inline */}
+        <div style={{ display: "flex", alignItems: "center", gap: "10px", flex: 1, justifyContent: "center" }}>
+          <button
+            onClick={() => go(idx - 1)}
+            disabled={idx === 0}
+            style={{
+              background: "var(--panel)",
+              border: "1px solid var(--line)",
+              borderRadius: "8px",
+              color: idx === 0 ? "var(--muted)" : "var(--text)",
+              padding: "7px 14px",
+              fontFamily: "inherit",
+              fontSize: "13px",
+              fontWeight: 600,
+              cursor: idx === 0 ? "default" : "pointer",
+              opacity: idx === 0 ? 0.45 : 1,
+              flexShrink: 0,
+            }}
+          >
+            ← Prev
+          </button>
+          <div style={{ display: "flex", gap: "7px", alignItems: "center" }}>
+            {PALETTES.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => go(i)}
+                aria-label={`Go to palette ${i + 1}`}
+                style={{
+                  width: "9px",
+                  height: "9px",
+                  borderRadius: "50%",
+                  border: "none",
+                  background: i === idx ? "var(--accent)" : "#332e49",
+                  cursor: "pointer",
+                  padding: 0,
+                  transform: i === idx ? "scale(1.25)" : "scale(1)",
+                  transition: "all 0.15s",
+                }}
+              />
+            ))}
+          </div>
+          <button
+            onClick={() => go(idx + 1)}
+            disabled={idx === total - 1}
+            style={{
+              background: idx === total - 1 ? "var(--panel)" : "var(--accent)",
+              border: "none",
+              borderRadius: "8px",
+              color: idx === total - 1 ? "var(--muted)" : "#0b0a12",
+              padding: "7px 14px",
+              fontFamily: "inherit",
+              fontSize: "13px",
+              fontWeight: 700,
+              cursor: idx === total - 1 ? "default" : "pointer",
+              opacity: idx === total - 1 ? 0.45 : 1,
+              flexShrink: 0,
+            }}
+          >
+            Next →
+          </button>
+        </div>
+
         <div
           style={{
             color: "var(--muted)",
-            fontSize: "14px",
+            fontSize: "13px",
             fontWeight: 600,
             fontVariantNumeric: "tabular-nums",
+            flexShrink: 0,
           }}
         >
           {idx + 1} / {total}
@@ -550,97 +615,6 @@ export default function Home() {
         </div>
       </div>
 
-      <nav style={{ padding: "0 16px 20px" }}>
-        <div
-          style={{
-            maxWidth: "860px",
-            margin: "0 auto",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            gap: "16px",
-          }}
-        >
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "12px",
-              width: "100%",
-              justifyContent: "space-between",
-            }}
-          >
-            <button
-              onClick={() => go(idx - 1)}
-              disabled={idx === 0}
-              style={{
-                background: "var(--panel)",
-                border: "1px solid var(--line)",
-                borderRadius: "10px",
-                color: idx === 0 ? "var(--muted)" : "var(--text)",
-                padding: "10px 18px",
-                fontFamily: "inherit",
-                fontSize: "14px",
-                fontWeight: 600,
-                cursor: idx === 0 ? "default" : "pointer",
-                opacity: idx === 0 ? 0.45 : 1,
-              }}
-            >
-              ← Previous
-            </button>
-
-            <div style={{ display: "flex", gap: "8px" }}>
-              {PALETTES.map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => go(i)}
-                  aria-label={`Go to palette ${i + 1}`}
-                  style={{
-                    width: "10px",
-                    height: "10px",
-                    borderRadius: "50%",
-                    border: "none",
-                    background: i === idx ? "var(--accent)" : "#332e49",
-                    cursor: "pointer",
-                    padding: 0,
-                    transform: i === idx ? "scale(1.25)" : "scale(1)",
-                    transition: "all 0.15s",
-                  }}
-                />
-              ))}
-            </div>
-
-            <button
-              onClick={() => go(idx + 1)}
-              disabled={idx === total - 1}
-              style={{
-                background: idx === total - 1 ? "var(--panel)" : "var(--accent)",
-                border: "none",
-                borderRadius: "10px",
-                color: idx === total - 1 ? "var(--muted)" : "#0b0a12",
-                padding: "10px 18px",
-                fontFamily: "inherit",
-                fontSize: "14px",
-                fontWeight: 700,
-                cursor: idx === total - 1 ? "default" : "pointer",
-                opacity: idx === total - 1 ? 0.45 : 1,
-              }}
-            >
-              Next palette →
-            </button>
-          </div>
-
-          <footer
-            style={{
-              fontSize: "12px",
-              color: "#6f6a8c",
-              textAlign: "center",
-            }}
-          >
-            Palettes are in-progress and not final · Use the buttons, dots, swipe, or ← → keys to move between options.
-          </footer>
-        </div>
-      </nav>
     </div>
   );
 }
