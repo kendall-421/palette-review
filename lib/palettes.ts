@@ -51,7 +51,7 @@ export const PALETTES: Palette[] = [
       { name: "Cream", hex: "#FAF3E6", role: "Background" },
       { name: "Charcoal", hex: "#262626", role: "Text" },
     ],
-    combosImages: ["/palette-b-logos.png", "/palette-b-logos-2.png"],
+    combosImages: ["/palette-b-logos-2.png", "/palette-b-logos.png"],
   },
   {
     id: "palette-c",
