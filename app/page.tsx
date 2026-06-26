@@ -178,17 +178,6 @@ function PaletteSwatches({ palette }: { palette: Palette }) {
           </div>
         ))}
       </div>
-      <div className="flex mt-3 gap-3 flex-wrap">
-        {palette.colors.map((color, i) => (
-          <div key={i} className="flex items-center gap-1.5">
-            <div
-              className="w-3 h-3 rounded-full border border-white/20 flex-shrink-0"
-              style={{ backgroundColor: color.hex }}
-            />
-            <span className="text-[11px] text-[#9b96b8]">{color.role}</span>
-          </div>
-        ))}
-      </div>
       {palette.combosImages && palette.combosImages.length > 0 ? (
         <LogoImageGallery images={palette.combosImages} />
       ) : palette.combos && palette.combos.length > 0 ? (
