@@ -164,7 +164,7 @@ function LogoImageGallery({ images }: { images: string[] }) {
 function PaletteSwatches({ palette }: { palette: Palette }) {
   return (
     <div className="flex flex-col h-full">
-      <div className="flex flex-1 overflow-hidden rounded-xl min-h-[220px]">
+      <div className="flex overflow-hidden rounded-xl" style={{ height: "120px" }}>
         {palette.colors.map((color, i) => (
           <div
             key={i}
