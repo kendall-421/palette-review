@@ -46,9 +46,9 @@ export const PALETTES: Palette[] = [
     badge: "Palette B",
     desc: "Olive green, sky blue, cream, and charcoal — earthy and grounded with a fresh pop of color.",
     colors: [
-      { name: "Olive", hex: "#B1C958", role: "Primary" },
-      { name: "Sky", hex: "#57B5DD", role: "Accent" },
-      { name: "Cream", hex: "#FAF3E6", role: "Background" },
+      { name: "Olive", hex: "#ABCA41", role: "Primary" },
+      { name: "Sky", hex: "#1EB8E1", role: "Accent" },
+      { name: "Cream", hex: "#FCF3E4", role: "Background" },
       { name: "Charcoal", hex: "#262626", role: "Text" },
     ],
     combosImages: ["/palette-b-logos-2.png", "/palette-b-logos.png"],
