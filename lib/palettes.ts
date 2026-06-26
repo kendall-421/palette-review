@@ -79,4 +79,17 @@ export const PALETTES: Palette[] = [
     ],
     combosImages: ["/palette-d-logos.png", "/palette-d-logos-2.png"],
   },
+  {
+    id: "palette-e",
+    title: "Option E",
+    badge: "Palette E",
+    desc: "Coral red, golden yellow, cream, and black — warm, bold, and retro-inspired with high energy.",
+    colors: [
+      { name: "Coral", hex: "#F35C4D", role: "Primary" },
+      { name: "Gold", hex: "#F4B942", role: "Secondary" },
+      { name: "Cream", hex: "#FCF3E4", role: "Background" },
+      { name: "Black", hex: "#000000", role: "Text" },
+    ],
+    combosImages: ["/palette-e-logos.png"],
+  },
 ];
